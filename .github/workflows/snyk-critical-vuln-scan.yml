@@ -1,4 +1,4 @@
-name: Example workflow for Node using Snyk
+name: Scan for Critical Vulnerabilities and Generate GitHub Issue
 on: push
 jobs:
   security:
