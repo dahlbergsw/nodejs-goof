@@ -36,5 +36,3 @@ jobs:
       - name: Execute Issue Checking Script
         run: |
           python create_github_issue.py
-     
-   
