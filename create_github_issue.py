@@ -40,9 +40,9 @@ def format_vulns(vulns):
     return html
         
     
-def create_github_issue(vulns: str):
+def create_github_issue(vulns):
 
-    title = "Critical Vulnerabilities found for PR: "
+    title = "Critical Vulnerabilities"
     
     url = f'https://api.github.com/repos/{GITHUB_REPOSITORY}/issues'
     
@@ -70,7 +70,7 @@ def create_github_issue(vulns: str):
     if response.status_code < 300:
         print(f'Successfully created issue: {title}, Status Code: {response.status_code}')
     else:
-        print(f'Failed to create issue: {title}, Status Code: {response.status_code}')
+        print(f'Failed to create issue, Status Code: {response.status_code}')
         raise Exception(f'Client side HTTPS error, Status Code: {response.status_code}')
         
 if __name__ == '__main__':
