@@ -9,16 +9,16 @@ GITHUB_REPOSITORY = os.getenv('GITHUB_REPOSITORY')
 def parse_json_file(file_path):
     with open(file_path, 'r') as f:
         data = json.load(f)
-        vulnerabilities = data["vulnerabilities"]
+        vulnerabilities = data.get("vulnerabilities", [])
 
         vuln_descriptions = []
         
         for vuln in vulnerabilities:
             line = {
-                "id": vuln["id"],
-                "title": vuln["title"],
-                "package": vuln["packageName"],
-                "version": vuln["version"]
+                "id": vuln.get("id"),
+                "title": vuln.get("title"),
+                "package": vuln.get("packageName"),
+                "version": vuln.get("version")
                 }
 
             vuln_descriptions.append(line)
