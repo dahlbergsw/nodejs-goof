@@ -45,7 +45,7 @@ def format_vulns(vulns: []) -> str:
         
 
 # Generate a new issue in GitHub containing a table of found vulnerabilities and
-# their associated information
+# their associated information.
 def create_github_issue(vulns: []):
     if GITHUB_REPOSITORY == "" or GITHUB_REPOSITORY is None:
         raise ValueError("GITHUB_REPOSITORY is missing value")
