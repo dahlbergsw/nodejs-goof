@@ -3,10 +3,13 @@ import json
 import os
 
 
+# Read environment variables created by workflow
 GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')
 GITHUB_REPOSITORY = os.getenv('GITHUB_REPOSITORY')
 
-def parse_json_file(file_path):
+# Read in JSON file produced by Snyk vulnerability scan and parse out required
+# fields into a list of objects.
+def parse_json_file(file_path: str) -> []:
     with open(file_path, 'r') as f:
         data = json.load(f)
         vulnerabilities = data.get("vulnerabilities", [])
@@ -25,7 +28,8 @@ def parse_json_file(file_path):
 
         return vuln_descriptions
 
-def format_vulns(vulns):
+# Format list of vuln objects into an table using HTML
+def format_vulns(vulns: []) -> str:
     if len(vulns) == 0:
         return "No Security Issues Found"
     
@@ -39,8 +43,10 @@ def format_vulns(vulns):
 
     return html
         
-    
-def create_github_issue(vulns):
+
+# Generate a new issue in GitHub containing a table of found vulnerabilities and
+# their associated information
+def create_github_issue(vulns: []):
     if GITHUB_REPOSITORY == "" or GITHUB_REPOSITORY is None:
         raise ValueError("GITHUB_REPOSITORY is missing value")
 
@@ -57,7 +63,6 @@ def create_github_issue(vulns):
     }
 
     body = format_vulns(vulns)
-    print(body)
     
     payload = {
         'title': title,
