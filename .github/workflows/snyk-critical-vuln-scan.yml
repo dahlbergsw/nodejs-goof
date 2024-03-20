@@ -3,8 +3,6 @@ on:
   push:
     branches:
     - main
-  pull-request:
-    - main
 jobs:
   vuln-scan:
     runs-on: ubuntu-latest
