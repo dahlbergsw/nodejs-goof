@@ -11,11 +11,8 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          args: --sarif-file-output=snyk.sarif --severity-threshold=critical
-      - name: Upload result to GitHub Code Scanning
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file: snyk.sarif
+          args: --severity-threshold=critical
+          json: true          
       - name: Checkout Repository
         uses: actions/checkout@v2 # checkout the repository content to github runner.
       - name: Setup Python
@@ -26,7 +23,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_SECRET }}
           GITHUB_REPO: ${{ github.GITHUB_REPO }}
-          SARIF_FILE: snyk.sarif
+          VULN_SCAN_FILE: snyk.json
         run: |
           python -m pip install --upgrade pip
           pip install requests

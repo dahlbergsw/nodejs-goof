@@ -4,7 +4,7 @@ import os
 
 GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')
 GITHUB_REPOSITORY = os.getenv('GITHUB_REPOSITORY')
-SARIF_FILE = os.getenv('SARIF_FILE')
+SARIF_FILE = os.getenv('VULN_SCAN_FILE')
 
 def parse_sarif_file(sarif_file_path):
 
