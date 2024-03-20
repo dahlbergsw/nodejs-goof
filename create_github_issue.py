@@ -71,8 +71,8 @@ def create_github_issue():
         print(f'Failed to create issue: {title}, Status Code: {response.status_code}')
         
 if __name__=='__main__':
-    print("SARIF_FILE")
-    parse_sarif_file(SARIF_FILE)
+    print(VULN_SCAN_FILE)
+    parse_sarif_file(VULN_SCAN_FILE)
     # read_critical_vulnerabilities_from_scanner(page=1)
     # create_github_issue()
     
