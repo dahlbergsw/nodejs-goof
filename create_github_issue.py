@@ -41,7 +41,12 @@ def format_vulns(vulns):
         
     
 def create_github_issue(vulns):
+    if GITHUB_REPOSITORY == "" or GITHUB_REPOSITORY is None:
+        raise ValueError("GITHUB_REPOSITORY is missing value")
 
+    if GITHUB_TOKEN == "" or GITHUB_TOKEN is None:
+        raise ValueError("GITHUB_TOKEN is missing value")
+    
     title = "Critical Vulnerabilities"
     
     url = f'https://api.github.com/repos/{GITHUB_REPOSITORY}/issues'
