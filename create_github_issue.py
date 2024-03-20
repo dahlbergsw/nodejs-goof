@@ -2,8 +2,8 @@ import requests
 import json
 import os
 
-GITHUB_TOKEN = os.getenv('PERSONAL_ACCESS_TOKEN')
-GITHUB_REPOSITORY = os.getenv('GITHUB_REPOSITORY')
+ GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')
+ GITHUB_REPOSITORY = os.getenv('GITHUB_REPOSITORY')
 
 def parse_sarif_file(sarif_file_path):
     pass
