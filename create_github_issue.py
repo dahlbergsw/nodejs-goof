@@ -74,7 +74,7 @@ if __name__=='__main__':
     print(f"dir_path: {dir_path}")
     print(os.listdir(dir_path))
     print(f"Vuln Scan File: {VULN_SCAN_FILE}")
-    parse_sarif_file(VULN_SCAN_FILE)
+    parse_sarif_file("critical_vuln_scan.json")
     # read_critical_vulnerabilities_from_scanner(page=1)
     # create_github_issue()
     
