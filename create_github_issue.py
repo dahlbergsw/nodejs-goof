@@ -71,7 +71,7 @@ def create_github_issue():
         
 if __name__=='__main__':
     dir_path = os.path.dirname(os.path.realpath(__file__))
-    print(f"dir_path: {dir_path}"
+    print(f"dir_path: {dir_path}")
     print(os.listdir(dir_path))
     print(f"Vuln Scan File: {VULN_SCAN_FILE}")
     parse_sarif_file(VULN_SCAN_FILE)
