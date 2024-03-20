@@ -11,8 +11,7 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          args: --json-file-output="critical_vuln_scan.json" --severity-threshold=critical
-          command: test
+          args: --json-file-output=critical_vuln_scan.json --severity-threshold=critical
       - name: Checkout Repository
         uses: actions/checkout@v2 # checkout the repository content to github runner.
       - name: Setup Python
@@ -23,7 +22,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_SECRET }}
           GITHUB_REPO: ${{ github.GITHUB_REPO }}
-          VULN_SCAN_FILE: "~/critical_vuln_scan.json"
+          VULN_SCAN_FILE: "critical_vuln_scan.json"
         run: |
           python -m pip install --upgrade pip
           pip install requests

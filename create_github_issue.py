@@ -7,7 +7,6 @@ GITHUB_REPOSITORY = os.getenv('GITHUB_REPOSITORY')
 VULN_SCAN_FILE = os.getenv('VULN_SCAN_FILE')
 
 def parse_sarif_file(file_path):
-
     with open(file_path, 'r') as f:
         print(f.readlines())
     
@@ -71,6 +70,9 @@ def create_github_issue():
         print(f'Failed to create issue: {title}, Status Code: {response.status_code}')
         
 if __name__=='__main__':
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    print(f"dir_path: {dir_path}"
+    print(os.listdir(dir_path))
     print(f"Vuln Scan File: {VULN_SCAN_FILE}")
     parse_sarif_file(VULN_SCAN_FILE)
     # read_critical_vulnerabilities_from_scanner(page=1)
