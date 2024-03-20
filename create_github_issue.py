@@ -26,6 +26,9 @@ def parse_json_file(file_path):
         return vuln_descriptions
 
 def format_vulns(vulns):
+    if len(vulns) == 0:
+        return "No Security Issues Found"
+    
     html = "<table>"
     html += "<tr><th>ID</th><th>Title</th><th>Package</th><th>Package Version</th>"
 
@@ -42,15 +45,15 @@ def create_github_issue(vulns: str):
     title = "Critical Vulnerabilities found for PR: "
     
     url = f'https://api.github.com/repos/{GITHUB_REPOSITORY}/issues'
-    print(url)
-
+    
     headers = {
         "Authorization": f"Bearer {GITHUB_TOKEN}",
         "Accept": "application/vnd.github+json"
     }
 
     body = format_vulns(vulns)
-
+    print(body)
+    
     payload = {
         'title': title,
         'body': body
@@ -62,11 +65,13 @@ def create_github_issue(vulns: str):
         response = requests.post(url, data=data, headers=headers)
     except Exception as e:
         print(e)
+        raise(e)
 
     if response.status_code < 300:
         print(f'Successfully created issue: {title}, Status Code: {response.status_code}')
     else:
         print(f'Failed to create issue: {title}, Status Code: {response.status_code}')
+        raise Exception(f'Client side HTTPS error, Status Code: {response.status_code}')
         
 if __name__=='__main__':
     vulns = parse_json_file("critical_vuln_scan.json")
