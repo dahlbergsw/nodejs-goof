@@ -1,7 +1,6 @@
 import requests
 import json
 import os
-from json2table import convert
 
 GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')
 GITHUB_REPOSITORY = os.getenv('GITHUB_REPOSITORY')
