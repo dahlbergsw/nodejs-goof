@@ -87,3 +87,4 @@ if __name__ == '__main__':
     vulns = parse_json_file("critical_vuln_scan.json")
     create_github_issue(vulns)
     
+    
